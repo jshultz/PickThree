@@ -23,11 +23,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view, typically from a nib.
         self.taskTable.dataSource = self
         self.taskTable.delegate = self
+
+        notificationToken = realm.addNotificationBlock { [unowned self] note, realm in
+            self.taskTable.reloadData()
+        }
+
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return array.count
     }
+    
+    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+        print("indexPath: ", indexPath)
+        activeTask = indexPath.row
+        return indexPath
+    }
+
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
@@ -89,11 +101,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        return cell
 //    }
 //    
-//    func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-//        print("indexPath: ", indexPath)
-//        activeTask = indexPath.row
-//        return indexPath
-//    }
 //
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
@@ -102,9 +109,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        self.taskTable.delegate = self
 //        
 //        
-//        notificationToken = realm.addNotificationBlock { [unowned self] note, realm in
-//            self.taskTable.reloadData()
-//        }
 //
 //        // Do any additional setup after loading the view, typically from a nib.
 //    }
