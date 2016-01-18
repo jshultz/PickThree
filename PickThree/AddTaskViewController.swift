@@ -23,7 +23,16 @@ class AddTaskViewController: UIViewController {
         
         let task = Task()
         
+        let date = NSDate()
+        
+        let cal = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+        let components = cal.components([.Day , .Month, .Year ], fromDate: date)
+        
+        task.year =  components.year
+        task.month = components.month
+        task.day = components.day
         task.name = self.taskText.text!
+        task.done = 0
         
         try! realm.write {
             realm.add(task)

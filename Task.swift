@@ -13,7 +13,11 @@ class Task: Object {
     
     dynamic var id = NSUUID().UUIDString
     dynamic var name = ""
-    dynamic var createdDate = ""
+    dynamic var createdDate = NSDate()
+    dynamic var year = Int()
+    dynamic var month = Int()
+    dynamic var day = Int()
+    dynamic var done = Int()
     
     // Specify properties to ignore (Realm won't persist these)
     
