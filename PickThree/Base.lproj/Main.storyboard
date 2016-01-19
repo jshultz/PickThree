@@ -42,7 +42,7 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="484"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="7dE-gx-DFe">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="7dE-gx-DFe" customClass="TaskTableViewCell" customModule="PickThree" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7dE-gx-DFe" id="Gxd-yz-TKK">
@@ -55,6 +55,10 @@
                                                         <constraint firstAttribute="width" constant="79" id="qO9-Ra-a01"/>
                                                     </constraints>
                                                     <state key="normal" title="STUFF!"/>
+                                                    <connections>
+                                                        <action selector="cellButton:" destination="7dE-gx-DFe" eventType="touchUpInside" id="ZUY-dz-bPY"/>
+                                                        <action selector="completeTask:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XRi-hf-8Lg"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="10" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWG-76-eV4">
                                                     <rect key="frame" x="95" y="11" width="497" height="21"/>
@@ -73,6 +77,10 @@
                                                 <constraint firstItem="UWG-76-eV4" firstAttribute="centerY" secondItem="XYX-MU-2Fm" secondAttribute="centerY" id="yiv-jg-fxg"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="cellButtonText" destination="XYX-MU-2Fm" id="hkx-eV-fXG"/>
+                                            <outlet property="taskLabel" destination="UWG-76-eV4" id="qOr-7G-uER"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

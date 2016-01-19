@@ -46,11 +46,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if array.count == 5 {
             if let addTaskButton = self.view.viewWithTag(90) as? UIButton? {
-                print("hello")
                 addTaskButton?.enabled = false;
             }
         }
 
+    }
+    
+    
+    @IBAction func completeTask(sender: AnyObject) {
+        
+        
     }
     
     func showAlert(errorTitle:String, errorMessage:String) {
@@ -75,22 +80,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! TaskTableViewCell
                 
         let object = array[indexPath.row]
         
-        print("object: ", object)
-
-        if let textField = cell.viewWithTag(10) as? UILabel {
-            print("here i am")
-            textField.text = object.name
-        }
-
-        if let button = cell.viewWithTag(20) as? UIButton {
-            
-            let rowNum:Int = indexPath.row + 1
-            button.setTitle("\(rowNum)", forState: UIControlState.Normal)
-        }
+        let rowNum:Int = indexPath.row + 1
+        
+        cell.configure(object.name, rowNumber: rowNum)
         
         return cell
     }
